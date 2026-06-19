@@ -1,6 +1,6 @@
 import type { ChatResponse, IngestForm, IngestResponse } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'https://neuron-backend-ten.vercel.app/';
+const API_URL = import.meta.env.VITE_API_URL ?? 'https://neuron-backend-ten.vercel.app';
 
 async function safeFetch(url: string, options: RequestInit) {
   try {
