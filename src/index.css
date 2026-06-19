@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    background-color: #FAF9F6;
+    color: #1C1B19;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark {
+    background-color: #161513;
+    color: #EDEAE3;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: #8B7355;
+    color: #FAF9F6;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #D6D0C4;
+    border-radius: 999px;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background-color: #3A372F;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: #8B7355;
+    color: #FAF9F6;
+    font-weight: 500;
+    padding: 0.5rem 1.125rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: #75603F;
+  }
+  .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    color: #6B6862;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background-color: #EFEBE3;
+    color: #1C1B19;
+  }
+  html.dark .btn-ghost:hover {
+    background-color: #211F1B;
+    color: #EDEAE3;
+  }
+
+  .input-base {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #E8E4DC;
+    border-radius: 4px;
+    padding: 0.625rem 0.875rem;
+    color: #1C1B19;
+    font-size: 0.9375rem;
+    transition: border-color 0.15s ease;
+  }
+  .input-base::placeholder {
+    color: #A8A296;
+  }
+  .input-base:focus {
+    outline: none;
+    border-color: #8B7355;
+  }
+  html.dark .input-base {
+    border-color: #2E2B26;
+    color: #EDEAE3;
+  }
+  html.dark .input-base::placeholder {
+    color: #5C594F;
+  }
+  html.dark .input-base:focus {
+    border-color: #A88B66;
+  }
+}
