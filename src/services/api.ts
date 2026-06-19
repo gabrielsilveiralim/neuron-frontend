@@ -1,9 +1,17 @@
 import type { ChatResponse, IngestForm, IngestResponse } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3333';
+const API_URL = import.meta.env.VITE_API_URL ?? 'https://neuron-backend-ten.vercel.app/';
+
+async function safeFetch(url: string, options: RequestInit) {
+  try {
+    return await fetch(url, options);
+  } catch {
+    throw new Error('Não foi possível conectar ao servidor. Verifique se o backend está rodando.');
+  }
+}
 
 export async function sendMessage(message: string): Promise<ChatResponse> {
-  const response = await fetch(`${API_URL}/chat`, {
+  const response = await safeFetch(`${API_URL}/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message }),
@@ -18,7 +26,7 @@ export async function sendMessage(message: string): Promise<ChatResponse> {
 }
 
 export async function ingestDocument(form: IngestForm): Promise<IngestResponse> {
-  const response = await fetch(`${API_URL}/ingest`, {
+  const response = await safeFetch(`${API_URL}/ingest`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
